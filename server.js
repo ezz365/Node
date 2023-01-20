@@ -39,8 +39,21 @@ app.get("/productos/:codigoProducto",async(req,res)=>{
 
 app.post("/productos",async(req,res)=>{
     const obj = req.body    
-    const producto = await producto.obtenerProductos(obj)
+    const producto = await productoClass.obtenerProductos(obj)
     res.json({message:"Producto creado con exito", producto})
+})
+
+app.put("/productos/:codigoProducto",async(req,res)=>{
+    const {codigoProducto} = req.params
+    const obj = req.body
+    const producto = await productoClass.actualizarProducto(parseInt(codigoProducto),obj)
+    res.json({message: "Producto actualizado con exito", producto})
+})  
+
+app.delete("/productos/:codigoProducto",async(req,res)=>{
+    const {codigoProducto} = req.params
+    const producto = await productoClass.eliminarProducto(parseInt(codigoProducto))
+    res.json({message: "Producto eliminado con exito", producto})
 })
 
 //declarar el puerto 8080

@@ -105,12 +105,12 @@ export class ProductManager {
     }
     
     //Eliminar productos
-    async eliminarProducto(idProducto){
+    async eliminarProducto(codigoProducto){
       let read = await fs.promises.readFile(this.path, 'utf-8')
       read = JSON.parse(read)
-      let producto = await this.getProductById(idProducto)
+      let producto = await this.getProductById(codigoProducto)
       if(producto){
-        const filtrado =read.filter(prod => prod.id != idProducto)
+        const filtrado =read.filter(prod => prod.id != codigoProducto)
         await fs.promises.writeFile(this.path, JSON.stringify(filtrado, null, 2))
         return filtrado
       }
