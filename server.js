@@ -4,6 +4,7 @@ import { ProductManager } from "./ProductManager.js"
 const app = express()
 const productManager = new ProductManager("productos.json")
 
+//Metodo use
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
