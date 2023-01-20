@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 //Rutas
-//usuarios
+//productos
 app.get("/productos",async(req,res)=>{
     try{
         const {limit} = req.query
@@ -22,13 +22,13 @@ app.get("/productos",async(req,res)=>{
         res.send(error)
     }
 })
-//usuarios por codigo
+//productos por codigo
 app.get("/productos/:codigoProducto",async(req,res)=>{
     const {codigoProducto} = req.params
     try{
         const producto = await productManager.getProductById(parseInt(codigoProducto))
         if(producto){
-            res.status(200).json({message: "Producto encontrado con exito",usuario})
+            res.status(200).json({message: "Producto encontrado con exito",producto})
         }else{
             res.status(400).json({message: "Producto no encontrado"})
         }
@@ -39,7 +39,7 @@ app.get("/productos/:codigoProducto",async(req,res)=>{
 
 app.post("/productos",async(req,res)=>{
     const obj = req.body    
-    const producto = await productosClass.crearProducto(obj)
+    const producto = await producto.obtenerProductos(obj)
     res.json({message:"Producto creado con exito", producto})
 })
 

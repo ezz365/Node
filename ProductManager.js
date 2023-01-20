@@ -117,8 +117,8 @@ export class ProductManager {
     }
 
     //Agregar productos
-    agregarProducto(codigoProducto, codigoUsuario){
-        const producto = this.getProductbyId(codigoProducto)
+    async agregarProducto(codigoProducto, codigoUsuario){
+        const producto = await this.getProductbyId(codigoProducto)
         if(producto){
             if(!producto.includes(codigoProducto)){
                 producto.push(codigoProducto)
