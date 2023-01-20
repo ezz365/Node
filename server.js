@@ -4,6 +4,9 @@ import { ProductManager } from "./ProductManager.js"
 const app = express()
 const productManager = new ProductManager("productos.json")
 
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 app.get("/productos",async(req,res)=>{
     const {limit} = req.query
     const productos = await productManager.obtenerProductos(limit || "max")
