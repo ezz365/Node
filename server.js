@@ -22,5 +22,5 @@ app.get("/productos/:codigoProducto",async(req,res)=>{
 const PORT = 8080
 
 app.listen(PORT, ()=>{
-    console.log(`Escuchando al ${PORT}`)
+    console.log(`Escuchando al puerto ${PORT}`)
 })
